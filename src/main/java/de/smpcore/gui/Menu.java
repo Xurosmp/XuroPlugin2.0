@@ -59,11 +59,11 @@ public abstract class Menu implements InventoryHolder {
 
     /** Öffnet ein anderes Menü einen Tick später (stabil mit Geyser/Bedrock). */
     protected void go(Menu next) {
-        Bukkit.getScheduler().runTask(plugin, next::open);
+        Bukkit.getScheduler().runTask(plugin, () -> next.open());
     }
 
     protected void closeLater() {
-        Bukkit.getScheduler().runTask(plugin, viewer::closeInventory);
+        Bukkit.getScheduler().runTask(plugin, () -> viewer.closeInventory());
     }
 
     /** Bestimmt den Chat-Prefix (z.B. "AH", "SHOP") für Nachrichten aus diesem Menü. */
